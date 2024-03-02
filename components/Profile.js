@@ -34,7 +34,7 @@ const Profile = ({ navigation }) => {
 
             {/* Profile Picture */}
             <View>
-                <Image source={require('../assets/images/profile.png')} style={styles.profileImg} />
+                <Image source={require('../assets/images/siddhi2.jpg')} style={styles.profileImg} />
             </View>
 
             {/* TextInputs */}
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         alignSelf: 'center',
         marginTop: 30,
-        marginBottom: 30
+        marginBottom: 30,
     },
     fieldInput: {
         borderColor: 'grey',

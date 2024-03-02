@@ -63,7 +63,7 @@ const Home = ({ navigation }) => {
                     <View style={styles.headerWrapper}>
 
                     <TouchableOpacity onPress={()=>navigation.navigate('Profile')}>
-                        <Image source={require('../assets/images/profile.png')} style={styles.profileImage} />
+                        <Image source={require('../assets/images/siddhi2.jpg')} style={styles.profileImage} />
                     </TouchableOpacity>
 
                         {/* Icon */}
@@ -335,8 +335,6 @@ const styles = StyleSheet.create({
         paddingVertical: 20,
         borderTopRightRadius: 25,
         borderBottomLeftRadius: 25,
-
-
     },
     ratingWrapper: {
         flexDirection: 'row',
@@ -350,8 +348,7 @@ const styles = StyleSheet.create({
         marginLeft: 5
     },
     popularCardRight: {
-        marginLeft: 40,
-
+        marginLeft: 50,
     },
     popularCardsImage: {
         width: 210,

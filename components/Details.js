@@ -84,7 +84,7 @@ const Details = ({ route, navigation }) => {
                 </View>
 
                 {/* Place an order */}
-                <TouchableOpacity onPress={()=>alert("Your order has been placed")}>
+                <TouchableOpacity onPress={()=>navigation.navigate('Checkout')}>
                     <View style={styles.orderWrapper}>
                         <Text style={styles.orderText}>Place an order</Text>
                         <Feather name="chevron-right" size={18} color={colors.black} />

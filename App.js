@@ -7,6 +7,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import Home from './components/Home';
 import Details from './components/Details';
 import Profile from './components/Profile';
+import Checkout from './components/Checkout';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,6 +33,13 @@ export default function App() {
           <Stack.Screen
             name="Profile"
             component={Profile}
+            options={{
+              headerShown: false
+            }}
+          />
+          <Stack.Screen
+            name="Checkout"
+            component={Checkout}
             options={{
               headerShown: false
             }}
