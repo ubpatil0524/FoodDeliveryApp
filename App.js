@@ -8,6 +8,7 @@ import Home from './components/Home';
 import Details from './components/Details';
 import Profile from './components/Profile';
 import Checkout from './components/Checkout';
+import PizzaCategory from './components/PizzaCategory';
 
 const Stack = createNativeStackNavigator();
 
@@ -40,6 +41,13 @@ export default function App() {
           <Stack.Screen
             name="Checkout"
             component={Checkout}
+            options={{
+              headerShown: false
+            }}
+          />
+          <Stack.Screen
+            name="PizzaCategory"
+            component={PizzaCategory}
             options={{
               headerShown: false
             }}

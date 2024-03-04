@@ -18,7 +18,7 @@ const Home = ({ navigation }) => {
   
       return (
         <TouchableOpacity
-          onPress={() => handleCategoryPress(item.id)}
+          onPress={() => navigation.navigate('PizzaCategory')}
           style={[
             styles.categoryItemWrapper,
             {
@@ -66,8 +66,6 @@ const Home = ({ navigation }) => {
                         <Image source={require('../assets/images/siddhi2.jpg')} style={styles.profileImage} />
                     </TouchableOpacity>
 
-                        {/* Icon */}
-                        {/* <Feather name="menu" size={24} color={colors.textDark} /> */}
                     </View>
                 </SafeAreaView>
 
@@ -107,7 +105,7 @@ const Home = ({ navigation }) => {
                     <Text style={styles.popularTitle}>Popular</Text>
                     {popularData.map(item => (
                         <TouchableOpacity 
-                        key={item.id} 
+                        key={item.id} i
                         onPress={()=> navigation.navigate('Details',{
                             item:item
                         })}>
