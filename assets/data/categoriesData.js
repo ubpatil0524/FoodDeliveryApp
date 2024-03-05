@@ -2,13 +2,13 @@ const categoriesData = [
   {
     id: '1',
     image: require('../images/pizza-icon.png'),
-    title: 'Pizza',
+    title: 'Pizzas',
     selected: true,
   },
   {
     id: '2',
     image: require('../images/shrimp-icon.png'),
-    title: 'Seafood',
+    title: 'Burgers',
     selected: false,
   },
   {

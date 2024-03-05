@@ -4,10 +4,10 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Feather from 'react-native-vector-icons/Feather';
 import colors from '../assets/colors/colors';
 import { ScrollView } from 'react-native-gesture-handler';
-import PizzaData from '../assets/data/PizzaData';
+import burgerData from '../assets/data/burgerData';
 
 
-const PizzaCategory = ({navigation}) => {
+const BurgerCategory = ({navigation}) => {
     return(
         <ScrollView>
         <View>
@@ -18,12 +18,12 @@ const PizzaCategory = ({navigation}) => {
                         <Feather name="chevron-left" size={18} color={colors.textDark} />
                     </View>
                 </TouchableOpacity>
-                <Text style={styles.headerTitle}>Pizza's</Text>
+                <Text style={styles.headerTitle}>Buger</Text>
             </View>
 
 
             <View style={styles.popularWrapper}>
-                    {PizzaData.map(item => (
+                    {burgerData.map(item => (
                         <TouchableOpacity 
                         key={item.id} 
                         onPress={()=> navigation.navigate('Details',{
@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
         marginLeft: 5
     },
     popularCardRight: {
-        marginLeft: 50,
+        marginLeft: 30,
     },
     popularCardsImage: {
         width: 210,
@@ -187,4 +187,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default PizzaCategory;
+export default BurgerCategory;

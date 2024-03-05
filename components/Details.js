@@ -5,6 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Feather from 'react-native-vector-icons/Feather';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import colors from '../assets/colors/colors';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const Details = ({ route, navigation }) => {
 
@@ -20,6 +21,7 @@ const Details = ({ route, navigation }) => {
         )
     }
     return (
+        <ScrollView>
         <View style={styles.container}>
             {/* Header */}
             <SafeAreaView>
@@ -90,7 +92,8 @@ const Details = ({ route, navigation }) => {
                         <Feather name="chevron-right" size={18} color={colors.black} />
                     </View>
                 </TouchableOpacity>
-        </View> 
+        </View>
+        </ScrollView> 
     )
 }
 

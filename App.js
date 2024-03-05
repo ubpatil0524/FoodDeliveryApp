@@ -9,6 +9,8 @@ import Details from './components/Details';
 import Profile from './components/Profile';
 import Checkout from './components/Checkout';
 import PizzaCategory from './components/PizzaCategory';
+import BurgerCategory from './components/BurgerCategory';
+import SoftDrinksCategory from './components/SoftDrinksCategory';
 
 const Stack = createNativeStackNavigator();
 
@@ -48,6 +50,20 @@ export default function App() {
           <Stack.Screen
             name="PizzaCategory"
             component={PizzaCategory}
+            options={{
+              headerShown: false
+            }}
+          />
+          <Stack.Screen
+            name="BurgerCategory"
+            component={BurgerCategory}
+            options={{
+              headerShown: false
+            }}
+          />
+          <Stack.Screen
+            name="SoftDrinksCategory"
+            component={SoftDrinksCategory}
             options={{
               headerShown: false
             }}

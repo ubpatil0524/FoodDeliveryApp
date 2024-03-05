@@ -10,15 +10,37 @@ import { TextInput } from 'react-native-gesture-handler';
 Feather.loadFont();
 MaterialCommunityIcons.loadFont();
 
-const Home = ({ navigation }) => {
-    const [selectedCategories, setSelectedCategory] = useState([]);
+const Home = ({ navigation }) => { 
+    const [selectedCategory, setSelectedCategory] = useState([]);
+
+    const handleCategoryPress = (categoryId) => {
+        setSelectedCategory(categoryId === selectedCategory ? null : categoryId);
+        if (categoryId === selectedCategory) {
+            setSelectedCategory(null);
+        } else {
+            switch (categoryId) {
+                case '1':
+                    navigation.navigate('PizzaCategory');
+                    break;
+                case '2':
+                    navigation.navigate('BurgerCategory');
+                    break;
+                case '3':
+                    navigation.navigate('SoftDrinksCategory');
+                    break;
+                
+                default:
+                    break;
+            }
+        }
+    };
   
     const renderCategoryItem = ({ item }) => {
-      const isSelected = selectedCategories.includes(item.id);
-  
+      const isSelected = selectedCategory === item.id;
+
       return (
         <TouchableOpacity
-          onPress={() => navigation.navigate('PizzaCategory')}
+        onPress={() => handleCategoryPress(item.id)}
           style={[
             styles.categoryItemWrapper,
             {
@@ -48,12 +70,9 @@ const Home = ({ navigation }) => {
       );
     };
   
-    const handleCategoryPress = (categoryId) => {
-      setSelectedCategory(categoryId === setSelectedCategory ? null : categoryId);
-    };
-
+    
     return (
-        <View style={styles.container} key={null}>
+        <View style={styles.container}>
             <ScrollView
                 contentInsetAdjustmentBehavior='automatic'
                 showsVerticalScrollIndicator={false}
@@ -77,7 +96,7 @@ const Home = ({ navigation }) => {
 
                 {/* Search */}
                 <View style={styles.searchWrapper}>
-                    <Feather name='search' size={16} color={colors.textDark} />
+                    <Feather name='search' size={20} color={colors.textDark} />
                     <View style={styles.search}>
                         <TextInput
                             placeholder='Search'
@@ -114,7 +133,8 @@ const Home = ({ navigation }) => {
                             style={[
                                 styles.popularCardWrapper,
                                 {
-                                    marginTop: item.id == 1 ? 10 : 20,
+                                    marginTop:10,
+                                    marginBottom: item.id == 1 ? 10 : 20,
                                 },
                             ]}
                         >
