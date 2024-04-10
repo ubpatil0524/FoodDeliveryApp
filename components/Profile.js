@@ -19,6 +19,9 @@ const Profile = ({ navigation }) => {
         setDate(currentDate);
     };
 
+    const submit = () =>{
+        navigation.goBack();
+    }
     return (
         <>
             {/* SafeAreaView is removed for simplicity */}
@@ -83,7 +86,7 @@ const Profile = ({ navigation }) => {
             </View>
 
             {/* Save Button */}
-            <TouchableOpacity>
+            <TouchableOpacity onPress={submit}>
                 <View style={styles.orderWrapper}>
                     <Text style={styles.orderText}>Save</Text>
                 </View>

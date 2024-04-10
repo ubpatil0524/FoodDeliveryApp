@@ -1,19 +1,19 @@
 const categoriesData = [
   {
     id: '1',
-    image: require('../images/pizza-icon.png'),
+    image: require('../images/pizzaCartton.png'),
     title: 'Pizzas',
     selected: true,
   },
   {
     id: '2',
-    image: require('../images/shrimp-icon.png'),
+    image: require('../images/burgerpng.png'),
     title: 'Burgers',
     selected: false,
   },
   {
     id: '3',
-    image: require('../images/soda-icon.png'),
+    image: require('../images/coldDrink.png'),
     title: 'Soft Drinks',
     selected: false,
   },

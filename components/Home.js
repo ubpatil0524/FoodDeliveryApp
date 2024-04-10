@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Text, View, StyleSheet, SafeAreaView, Image, FlatList, ScrollView, TouchableOpacity, Pressable } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -10,7 +10,7 @@ import { TextInput } from 'react-native-gesture-handler';
 Feather.loadFont();
 MaterialCommunityIcons.loadFont();
 
-const Home = ({ navigation }) => { 
+const Home = ({ navigation }) => {
     const [selectedCategory, setSelectedCategory] = useState([]);
 
     const handleCategoryPress = (categoryId) => {
@@ -28,49 +28,49 @@ const Home = ({ navigation }) => {
                 case '3':
                     navigation.navigate('SoftDrinksCategory');
                     break;
-                
+
                 default:
                     break;
             }
         }
     };
-  
-    const renderCategoryItem = ({ item }) => {
-      const isSelected = selectedCategory === item.id;
 
-      return (
-        <TouchableOpacity
-        onPress={() => handleCategoryPress(item.id)}
-          style={[
-            styles.categoryItemWrapper,
-            {
-              backgroundColor: isSelected ? colors.primary : colors.white,
-              marginLeft: item.id == '1' ? 20 : 0,
-            },
-          ]}
-        >
-          <Image source={item.image} style={styles.categoryItemImage} />
-          <Text style={styles.categoryItemTitle}>{item.title}</Text>
-          <View
-            style={[
-              styles.categorySelectWrapper,
-              {
-                backgroundColor: isSelected ? colors.white : colors.secondary,
-              },
-            ]}
-          >
-            <Feather
-              name='chevron-right'
-              size={12}
-              style={styles.categorySelectIcon}
-              color={isSelected ? colors.black : colors.white}
-            />
-          </View>
-        </TouchableOpacity>
-      );
+    const renderCategoryItem = ({ item }) => {
+        const isSelected = selectedCategory === item.id;
+
+        return (
+            <TouchableOpacity
+                onPress={() => handleCategoryPress(item.id)}
+                style={[
+                    styles.categoryItemWrapper,
+                    {
+                        backgroundColor: isSelected ? colors.primary : colors.white,
+                        marginLeft: item.id == '1' ? 20 : 0,
+                    },
+                ]}
+            >
+                <Image source={item.image} style={styles.categoryItemImage} />
+                <Text style={styles.categoryItemTitle}>{item.title}</Text>
+                <View
+                    style={[
+                        styles.categorySelectWrapper,
+                        {
+                            backgroundColor: isSelected ? colors.white : colors.secondary,
+                        },
+                    ]}
+                >
+                    <Feather
+                        name='chevron-right'
+                        size={12}
+                        style={styles.categorySelectIcon}
+                        color={isSelected ? colors.black : colors.white}
+                    />
+                </View>
+            </TouchableOpacity>
+        );
     };
-  
-    
+
+
     return (
         <View style={styles.container}>
             <ScrollView
@@ -78,15 +78,21 @@ const Home = ({ navigation }) => {
                 showsVerticalScrollIndicator={false}
             >
                 {/* Header */}
+                <View style={{flexDirection:'row'}}>
                 <SafeAreaView>
                     <View style={styles.headerWrapper}>
 
-                    <TouchableOpacity onPress={()=>navigation.navigate('Profile')}>
-                        <Image source={require('../assets/images/siddhi2.jpg')} style={styles.profileImage} />
-                    </TouchableOpacity>
+                        <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+                            <Image source={require('../assets/images/siddhi2.jpg')} style={styles.profileImage} />
+                        </TouchableOpacity>
 
                     </View>
                 </SafeAreaView>
+
+                <TouchableOpacity style={styles.addItems} onPress={() => navigation.navigate('AddItems')}>
+                    <Text style={styles.addItemsText}>+ Add Items</Text>
+                </TouchableOpacity>
+                </View>
 
                 {/* Titles */}
                 <View style={styles.titlesWrapper}>
@@ -113,7 +119,7 @@ const Home = ({ navigation }) => {
                         <FlatList
                             data={categoriesData}
                             renderItem={renderCategoryItem}
-                            keyExtractor={(item) => item.id} 
+                            keyExtractor={(item) => item.id}
                             horizontal={true}
                         />
                     </View>
@@ -123,60 +129,60 @@ const Home = ({ navigation }) => {
                 <View style={styles.popularWrapper}>
                     <Text style={styles.popularTitle}>Popular</Text>
                     {popularData.map(item => (
-                        <TouchableOpacity 
-                        key={item.id} i
-                        onPress={()=> navigation.navigate('Details',{
-                            item:item
-                        })}>
-                        <View
-                             
-                            style={[
-                                styles.popularCardWrapper,
-                                {
-                                    marginTop:10,
-                                    marginBottom: item.id == 1 ? 10 : 20,
-                                },
-                            ]}
-                        >
-                            <View>
+                        <TouchableOpacity
+                            key={item.id} i
+                            onPress={() => navigation.navigate('Details', {
+                                item: item
+                            })}>
+                            <View
+
+                                style={[
+                                    styles.popularCardWrapper,
+                                    {
+                                        marginTop: 10,
+                                        marginBottom: item.id == 1 ? 10 : 20,
+                                    },
+                                ]}
+                            >
                                 <View>
-                                    <View style={styles.popularTopWrapper}>
-                                        <MaterialCommunityIcons
-                                            name="crown"
-                                            size={18}
-                                            color={colors.primary}
-                                        />
-                                        <Text style={styles.popularTopText}>Top of the week</Text>
+                                    <View>
+                                        <View style={styles.popularTopWrapper}>
+                                            <MaterialCommunityIcons
+                                                name="crown"
+                                                size={18}
+                                                color={colors.primary}
+                                            />
+                                            <Text style={styles.popularTopText}>Top of the week</Text>
+                                        </View>
+                                        <View>
+                                            <View style={styles.popularTitleWrapper}></View>
+                                            <Text style={styles.popularTitlesTitle}> {item.title}</Text>
+                                            {/* <Text style={styles.popularTitlesWeight}>
+                                                Weight {item.title}
+                                            </Text> */}
+                                        </View>
                                     </View>
                                     <View>
-                                        <View style={styles.popularTitleWrapper}></View>
-                                        <Text style={styles.popularTitlesTitle}> {item.title}</Text>
-                                        <Text style={styles.popularTitlesWeight}>
-                                            Weight {item.title}
-                                        </Text>
-                                    </View>
-                                </View>
-                                <View>
-                                    <View style={styles.popularCardBottom}>
-                                        <View style={styles.addPizzaButton}>
-                                            <Feather name="plus" size={15} color={colors.textDark} />
-                                        </View>
-                                        <View style={styles.ratingWrapper}>
-                                            <MaterialCommunityIcons name="star" size={15} color={colors.textDark} />
-                                            <Text style={styles.rating}>{item.rating}</Text>
+                                        <View style={styles.popularCardBottom}>
+                                            <View style={styles.addPizzaButton}>
+                                                <Feather name="plus" size={15} color={colors.textDark} />
+                                            </View>
+                                            <View style={styles.ratingWrapper}>
+                                                <MaterialCommunityIcons name="star" size={15} color={colors.textDark} />
+                                                <Text style={styles.rating}>{item.rating}</Text>
+                                            </View>
                                         </View>
                                     </View>
                                 </View>
-                            </View>
 
-                            <View style={styles.popularCardRight}>
-                                <Image source={item.image} style={styles.popularCardsImage} />
+                                <View style={styles.popularCardRight}>
+                                    <Image source={item.image} style={styles.popularCardsImage} />
+                                </View>
                             </View>
-                        </View>
                         </TouchableOpacity>
                     ))}
                 </View>
-                
+
             </ScrollView>
         </View>
     );
@@ -247,7 +253,7 @@ const styles = StyleSheet.create({
     categoriesListWrapper: {
         paddingTop: 15,
         paddingBottom: 20,
-      
+
     },
     categoryItemWrapper: {
         backgroundColor: '#f5ca48',
@@ -373,6 +379,24 @@ const styles = StyleSheet.create({
         height: 125,
         resizeMode: 'contain',
     },
+    addItems: {
+        marginHorizontal: 20,
+        marginTop: 20,
+        backgroundColor: colors.primary,
+        borderRadius: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: 40,
+        width:150, 
+        marginLeft:110, 
+        elevation:2,
+    },
+    addItemsText: {
+        color: colors.white,
+        fontSize: 20,
+        fontWeight: '500'
+        
+    }
 })
 
 export default Home;

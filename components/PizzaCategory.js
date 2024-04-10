@@ -4,7 +4,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Feather from 'react-native-vector-icons/Feather';
 import colors from '../assets/colors/colors';
 import { ScrollView } from 'react-native-gesture-handler';
-import PizzaData from '../assets/data/PizzaData';
+import PizzaData from '../assets/data/pizzaData';
 
 
 const PizzaCategory = ({navigation}) => {
@@ -50,9 +50,9 @@ const PizzaCategory = ({navigation}) => {
                                     <View>
                                         <View style={styles.popularTitleWrapper}></View>
                                         <Text style={styles.popularTitlesTitle}> {item.title}</Text>
-                                        <Text style={styles.popularTitlesWeight}>
+                                        {/* <Text style={styles.popularTitlesWeight}>
                                             Weight {item.title}
-                                        </Text>
+                                        </Text> */}
                                     </View>
                                 </View>
                                 <View>

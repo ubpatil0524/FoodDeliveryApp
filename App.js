@@ -11,6 +11,7 @@ import Checkout from './components/Checkout';
 import PizzaCategory from './components/PizzaCategory';
 import BurgerCategory from './components/BurgerCategory';
 import SoftDrinksCategory from './components/SoftDrinksCategory';
+import AddItems from './components/AddItems';
 
 const Stack = createNativeStackNavigator();
 
@@ -64,6 +65,13 @@ export default function App() {
           <Stack.Screen
             name="SoftDrinksCategory"
             component={SoftDrinksCategory}
+            options={{
+              headerShown: false
+            }}
+          />
+          <Stack.Screen
+            name="AddItems"
+            component={AddItems}
             options={{
               headerShown: false
             }}

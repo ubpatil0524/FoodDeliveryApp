@@ -8,6 +8,7 @@ import burgerData from '../assets/data/burgerData';
 
 
 const BurgerCategory = ({navigation}) => {
+  
     return(
         <ScrollView>
         <View>
@@ -50,9 +51,9 @@ const BurgerCategory = ({navigation}) => {
                                     <View>
                                         <View style={styles.popularTitleWrapper}></View>
                                         <Text style={styles.popularTitlesTitle}> {item.title}</Text>
-                                        <Text style={styles.popularTitlesWeight}>
+                                        {/* <Text style={styles.popularTitlesWeight}>
                                             Weight {item.title}
-                                        </Text>
+                                        </Text> */}
                                     </View>
                                 </View>
                                 <View>

@@ -7,8 +7,10 @@ import Octicons from 'react-native-vector-icons/Octicons'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import colors from '../assets/colors/colors';
 
-const Checkout = ({ navigation }) => {
+const Checkout = ({ navigation, route }) => {
+    const { item } = route.params;
     return (
+        <ScrollView>
         <View style={styles.container}>
             {/* Header */}
             <View style={styles.header}>
@@ -22,7 +24,7 @@ const Checkout = ({ navigation }) => {
             <View style={styles.itemContainer}>
                 <View style={styles.itemDetails}>
                     <Image source={require('../assets/images/NonVeglogo.png')} style={styles.itemIcon} />
-                    <Text style={styles.itemText}>Primavera Pizza</Text>
+                    <Text style={styles.itemText}>{item.title}</Text>
                     <View style={styles.quantityContainer}>
                         <TouchableOpacity style={styles.quantityButton}>
                             <Feather name="minus" size={20} color={colors.textDark} />
@@ -33,8 +35,8 @@ const Checkout = ({ navigation }) => {
                         </TouchableOpacity>
                     </View>
                 </View>
-                <Text style={styles.itemPrice}>₹287</Text>
-                <Text style={styles.itemSize}>8 Inches</Text>
+                <Text style={styles.itemPrice}>₹{item.price}</Text>
+                <Text style={styles.itemSize}>{item.sizeName}</Text>
 
                 <ScrollView horizontal={true} contentContainerStyle={styles.additionalOptions}>
                     <TouchableOpacity style={styles.option}>
@@ -52,7 +54,7 @@ const Checkout = ({ navigation }) => {
             <View style={styles.deliveryDetails}>
                 <View style={styles.detailItem}>
                     <MaterialCommunityIcons name='timer' size={24} color={colors.primary} />
-                    <Text style={styles.detailText}>Delivery in 35-40 mins</Text>
+                    <Text style={styles.detailText}>Delivery in {item.deliveryTime} mins</Text>
                 </View>
                 <View style={styles.detailItem}>
                     <MaterialCommunityIcons name='home' size={24} color={colors.primary} />
@@ -65,7 +67,7 @@ const Checkout = ({ navigation }) => {
 
                 <View style={{ flexDirection: 'row', marginLeft: 5, marginTop: 10 }}>
                     <Octicons name='checklist' size={22} color={colors.primary} />
-                    <Text style={{ fontSize: 17, color: colors.black, marginLeft: 5, marginTop: -2 }}>Total Bill <Text style={{ fontWeight: '500', fontSize: 16 }}>₹300</Text></Text>
+                    <Text style={{ fontSize: 17, color: colors.black, marginLeft: 5, marginTop: -2 }}>Total Bill <Text style={{ fontWeight: '500', fontSize: 16 }}>₹{(item.price) + 30}</Text></Text>
                 </View>
                 <Text style={{ fontSize: 17, color: colors.textLight, marginLeft: 34 }}>Incl.taxes, charges & donation</Text>
 
@@ -92,6 +94,7 @@ const Checkout = ({ navigation }) => {
             </TouchableOpacity>
             </View>
         </View>
+        </ScrollView>
     )
 }
 
