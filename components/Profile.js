@@ -24,7 +24,6 @@ const Profile = ({ navigation }) => {
     }
     return (
         <>
-            {/* SafeAreaView is removed for simplicity */}
             {/* Header */}
             <View style={styles.headerWrapper}>
                 <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -37,7 +36,7 @@ const Profile = ({ navigation }) => {
 
             {/* Profile Picture */}
             <View>
-                <Image source={require('../assets/images/siddhi2.jpg')} style={styles.profileImg} />
+                <Image source={require('../assets/images/UtkarshProfile.png')} style={styles.profileImg} />
             </View>
 
             {/* TextInputs */}
@@ -45,21 +44,21 @@ const Profile = ({ navigation }) => {
                 <View style={styles.icon}>
                     <Feather name="user" size={20} color={colors.textDark} />
                 </View>
-                <TextInput placeholder='Name' value='Siddhi Velapure' placeholderTextColor={colors.textLight} style={styles.txtInput} />
+                <TextInput placeholder='Name' value='Utkarsh Patil' placeholderTextColor={colors.textLight} style={styles.txtInput} />
 
             </View>
             <View style={styles.fieldInput}>
                 <View style={styles.icon}>
                     <Feather name="phone" size={20} color={colors.textDark} />
                 </View>
-                <TextInput placeholder='Mobile No' value='7796743303' placeholderTextColor={colors.textLight} style={styles.txtInput} />
+                <TextInput placeholder='Mobile No' value='8600180187' placeholderTextColor={colors.textLight} style={styles.txtInput} />
 
             </View>
             <View style={styles.fieldInput}>
                 <View style={styles.icon}>
                     <Feather name="mail" size={20} color={colors.textDark} />
                 </View>
-                <TextInput placeholder='Email' value='siddhi@gmail.com' placeholderTextColor={colors.textLight} style={styles.txtInput} />
+                <TextInput placeholder='Email' value='ubpatil0524@gmail.com' placeholderTextColor={colors.textLight} style={styles.txtInput} />
 
             </View>
 
@@ -77,7 +76,7 @@ const Profile = ({ navigation }) => {
                 {showDate && (
                     <DateTimePicker
                         value={date || new Date()}
-                        mode="date"
+                        // mode="date"
                         display="default"
                         onChange={onChange}
                         placeholderText='Date of birth'

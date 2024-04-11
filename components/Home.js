@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, SafeAreaView, Image, FlatList, ScrollView, TouchableOpacity, Pressable } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -44,7 +44,7 @@ const Home = ({ navigation }) => {
                 style={[
                     styles.categoryItemWrapper,
                     {
-                        backgroundColor: isSelected ? colors.primary : colors.white,
+                        backgroundColor: colors.white,
                         marginLeft: item.id == '1' ? 20 : 0,
                     },
                 ]}
@@ -55,7 +55,7 @@ const Home = ({ navigation }) => {
                     style={[
                         styles.categorySelectWrapper,
                         {
-                            backgroundColor: isSelected ? colors.white : colors.secondary,
+                            backgroundColor: colors.secondary,
                         },
                     ]}
                 >
@@ -63,13 +63,27 @@ const Home = ({ navigation }) => {
                         name='chevron-right'
                         size={12}
                         style={styles.categorySelectIcon}
-                        color={isSelected ? colors.black : colors.white}
+                        color={colors.white}
                     />
                 </View>
             </TouchableOpacity>
         );
     };
 
+    const [searchQuery, setSearchQuery] = useState('');
+    const [filteredPopularData, setFilteredPopularData] = useState(popularData);
+
+    useEffect(() => {
+        // Filter popular data based on the search query
+        const filteredData = popularData.filter(item =>
+            item.title.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+        setFilteredPopularData(filteredData);
+    }, [searchQuery]);
+
+    const handleSearch = (query) => {
+        setSearchQuery(query);
+    };
 
     return (
         <View style={styles.container}>
@@ -83,7 +97,7 @@ const Home = ({ navigation }) => {
                     <View style={styles.headerWrapper}>
 
                         <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
-                            <Image source={require('../assets/images/siddhi2.jpg')} style={styles.profileImage} />
+                            <Image source={require('../assets/images/UtkarshProfile.png')} style={styles.profileImage} />
                         </TouchableOpacity>
 
                     </View>
@@ -108,6 +122,7 @@ const Home = ({ navigation }) => {
                             placeholder='Search'
                             placeholderTextColor={colors.textLight}
                             style={styles.searchText}
+                            onChangeText={handleSearch}
                         />
                     </View>
                 </View>
@@ -128,9 +143,9 @@ const Home = ({ navigation }) => {
                 {/* Popular */}
                 <View style={styles.popularWrapper}>
                     <Text style={styles.popularTitle}>Popular</Text>
-                    {popularData.map(item => (
+                    {filteredPopularData.map(item => (
                         <TouchableOpacity
-                            key={item.id} i
+                            key={item.id} 
                             onPress={() => navigation.navigate('Details', {
                                 item: item
                             })}>

@@ -12,6 +12,9 @@ import PizzaCategory from './components/PizzaCategory';
 import BurgerCategory from './components/BurgerCategory';
 import SoftDrinksCategory from './components/SoftDrinksCategory';
 import AddItems from './components/AddItems';
+import Register from './components/Register';
+import Login from './components/Login';
+import MainPage from './components/MainPage';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,7 +22,28 @@ export default function App() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator initialRouteName="MainPage">
+          <Stack.Screen
+            name="Register"
+            component={Register}
+            options={{
+              headerShown: false
+            }}
+          />
+          <Stack.Screen
+            name="Login"
+            component={Login}
+            options={{
+              headerShown: false
+            }}
+          />
+          <Stack.Screen
+            name="MainPage"
+            component={MainPage}
+            options={{
+              headerShown: false
+            }}
+          />
           <Stack.Screen
             name="Home"
             component={Home}
@@ -76,6 +100,7 @@ export default function App() {
               headerShown: false
             }}
           />
+
         </Stack.Navigator>
       </NavigationContainer>
     </GestureHandlerRootView>
